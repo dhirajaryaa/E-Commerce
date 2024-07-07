@@ -1,8 +1,12 @@
 import React from 'react'
+import Cart from "../components/Cart"
 
 function CartPage() {
   return (
-    <div>CartPage</div>
+    <>
+    <h1>Cart page</h1>
+   <Cart />
+    </>
   )
 }
 
