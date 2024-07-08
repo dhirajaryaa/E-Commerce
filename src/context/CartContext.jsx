@@ -1,33 +1,24 @@
-import React, { createContext, useEffect, useReducer, useState } from 'react'
+import React, { createContext, useEffect, useReducer } from "react";
+import { CartReducer } from "./CartReducer";
 
 export const Cart = createContext();
 
-function CartContext({children}) {
-    const [products,setProducts] = useState([]);
+function CartContext({ children }) {
+  const [state, dispatch] = useReducer(CartReducer, {
+    products: [],
+    cart: [],
+  });
 
-    async function getProduct(){
-        try {
-            const res = await fetch(`https://fakestoreapi.com/products`);
-            const json = await res.json();
-            setProducts((prev) => [...prev, ...json]);
-        } catch (err) {
-            alert(err);
-        }
-    }
-    
+  function getProduct() {
+    fetch(`https://fakestoreapi.com/products`)
+      .then((res) => res.json())
+      .then((json) => dispatch({ type: "SET_PRODUCTS", payload: json }))
+      .catch((err) => alert(err));
+  }
+  useEffect(() => {
+    getProduct();
+  }, []);
 
-    useEffect(()=>{
-        getProduct();
-    },[])
-
-    const [state,dispatch] = useReducer(CartContext,{
-        products:products,
-        cart:[]
-    })
-
-
-  return (
-    <Cart.Provider value={{state,dispatch}}>{children}</Cart.Provider>
-  )
+  return <Cart.Provider value={{ state, dispatch }}>{children}</Cart.Provider>;
 }
-export default CartContext
+export default CartContext;
