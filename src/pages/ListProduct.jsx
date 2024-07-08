@@ -1,11 +1,14 @@
-import React from "react";
+import React, { useContext } from "react";
 import Product from "../components/Product";
+import { Cart } from "../context/CartContext";
 
 function ListProduct() {
+    const {state} = useContext(Cart);
+    // console.log(state);
   return (
-    <section class="text-black body-font">
-      <div class="container px-5 py-24 mx-auto">
-        <div class="flex flex-wrap -m-4">
+    <section className="text-black body-font">
+      <div className="container px-5 py-24 mx-auto">
+        <div className="flex flex-wrap -m-4">
 
             <Product />
             <Product />
