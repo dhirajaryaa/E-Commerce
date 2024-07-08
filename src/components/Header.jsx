@@ -13,11 +13,10 @@ function Header() {
 
   const toggleSearch = () => {
     setIsOpen(!isOpen);
-    console.log("clied");
   };
 
   return (
-    <header className="text-white bg-blue-500 h-16 sticky top-0 left-0 sm:px-0 px-10">
+    <header className="text-white bg-blue-500 h-16 sticky top-0 left-0 sm:px-0 px-10 z-50">
       <nav className="container flex justify-between items-center  h-16 mx-auto">
         <div className="brand">
           <Link
