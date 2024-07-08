@@ -19,6 +19,8 @@ function CartContext({ children }) {
     getProduct();
   }, []);
 
+  console.log(state.cart);
+
   return <Cart.Provider value={{ state, dispatch }}>{children}</Cart.Provider>;
 }
 export default CartContext;

@@ -4,8 +4,12 @@ import { Cart } from "../context/CartContext";
 
 function ListProduct() {
   const {
-    state: { products },
+    state: { products},dispatch
   } = useContext(Cart);
+
+  const addToCart = (prod)=>{
+    dispatch({ type: "SET_PRODUCTS_ON_CART", payload: prod })
+  }
 
   return (
     <section className="text-black body-font">
@@ -13,7 +17,7 @@ function ListProduct() {
         <div className="flex flex-wrap gap-6 justify-center">
           {products &&
             products.map((product) => (
-              <Product key={product.id} product={product}/>
+              <Product key={product.id} product={product} addToCart={addToCart}/>
             ))}
         </div>
       </div>
