@@ -1,9 +1,10 @@
 import React from 'react'
+import ListProduct from './ListProduct'
 
 function Home() {
   return (
-    <main className='container h-screen'>
-      <h1>Home</h1>
+    <main className='container mx-auto'>
+      <ListProduct />
     </main>
   )
 }
