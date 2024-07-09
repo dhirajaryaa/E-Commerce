@@ -4,7 +4,17 @@ export function CartReducer(state, action) {
       return { ...state, products: action.payload };
 
     case "SET_PRODUCTS_ON_CART": {
-      return { ...state, cart: [...state.cart, action.payload] };
+      let itPresent = false;
+      state.cart.map((item) => {
+        if (item.id === action.payload.id) {
+          itPresent = true;
+        }
+      });
+      if (itPresent) {
+        return state;
+      }
+      const newProd = { ...action.payload, qty: 1 };
+      return { ...state, cart: [...state.cart, newProd] };
     }
 
     case "DEC_QTY_ON_CART": {
