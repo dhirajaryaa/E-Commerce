@@ -1,4 +1,4 @@
-function Product({ product,addToCart}) {
+function Product({ product,addToCart,viewProduct}) {
   return (
     <div className="md:w-72 w-full border-gray-300 border-2 rounded-xl">
       <div className="p-4">
@@ -24,7 +24,7 @@ function Product({ product,addToCart}) {
           <button  onClick={()=>addToCart(product)}  className="px-3 h-10 bg-rose-500 text-base font-semibold text-white rounded-xl hover:bg-rose-600 shadow-xl shadow-indigo-300/40">
             Add to Cart
           </button>
-          <button className="px-3 h-10 bg-green-500 text-base font-semibold text-white rounded-xl hover:bg-green-600 shadow-xl shadow-indigo-300/40">
+          <button onClick={()=>viewProduct(product.id)} className="px-3 h-10 bg-green-500 text-base font-semibold text-white rounded-xl hover:bg-green-600 shadow-xl shadow-indigo-300/40">
             View Product
           </button>
         </div>
