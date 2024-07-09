@@ -12,18 +12,7 @@ function ListProduct() {
   } = useContext(Cart);
 
   const addToCart = (prod) => {
-    let itPresent = false;
-    cart.map((item) => {
-      if (item.id === prod.id) {
-        itPresent = true;
-      }
-    });
-    if (itPresent) {
-      alert("this item is already present in your cart");
-      return;
-    }
-    const newProd = {...prod,qty:1}
-    dispatch({ type: "SET_PRODUCTS_ON_CART", payload: newProd });
+    dispatch({ type: "SET_PRODUCTS_ON_CART", payload: prod });
   };
 
   const viewProduct = (id)=>{
