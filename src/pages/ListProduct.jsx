@@ -19,8 +19,8 @@ function ListProduct() {
       alert("this item is already present in your cart");
       return;
     }
-    dispatch({ type: "SET_PRODUCTS_ON_CART", payload: prod });
-    console.log(cart);
+    const newProd = {...prod,qty:1}
+    dispatch({ type: "SET_PRODUCTS_ON_CART", payload: newProd });
   };
 
   return (

@@ -2,8 +2,6 @@ import React, { createContext, useEffect, useReducer } from "react";
 import { CartReducer } from "./CartReducer";
 
 const Data =  "./data.json"
-console.log(Data);
-
 
 export const Cart = createContext();
 
