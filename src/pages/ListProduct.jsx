@@ -4,20 +4,36 @@ import { Cart } from "../context/CartContext";
 
 function ListProduct() {
   const {
-    state: { products},dispatch
+    state: { products, cart },
+    dispatch,
   } = useContext(Cart);
 
-  const addToCart = (prod)=>{
-    dispatch({ type: "SET_PRODUCTS_ON_CART", payload: prod })
-  }
+  const addToCart = (prod) => {
+    let itPresent = false;
+    cart.map((item) => {
+      if (item.id === prod.id) {
+        itPresent = true;
+      }
+    });
+    if (itPresent) {
+      alert("this item is already present in your cart");
+      return;
+    }
+    dispatch({ type: "SET_PRODUCTS_ON_CART", payload: prod });
+    console.log(cart);
+  };
 
   return (
     <section className="text-black body-font">
-      <div className="container px-5 py-24 mx-auto">
-        <div className="flex flex-wrap gap-6 justify-center">
+      <div className="container px-2 py-14 mx-auto">
+        <div className="flex flex-wrap gap-6 justify-evenly">
           {products &&
             products.map((product) => (
-              <Product key={product.id} product={product} addToCart={addToCart}/>
+              <Product
+                key={product.id}
+                product={product}
+                addToCart={addToCart}
+              />
             ))}
         </div>
       </div>
