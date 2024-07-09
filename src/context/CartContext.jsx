@@ -1,6 +1,10 @@
 import React, { createContext, useEffect, useReducer } from "react";
 import { CartReducer } from "./CartReducer";
 
+const Data =  "./data.json"
+console.log(Data);
+
+
 export const Cart = createContext();
 
 function CartContext({ children }) {
@@ -9,8 +13,14 @@ function CartContext({ children }) {
     cart: [],
   });
 
+  // function getProduct() {
+  //   fetch(`https://fakestoreapi.com/products`)
+  //     .then((res) => res.json())
+  //     .then((json) => dispatch({ type: "SET_PRODUCTS", payload: json }))
+  //     .catch((err) => alert(err));
+  // }
   function getProduct() {
-    fetch(`https://fakestoreapi.com/products`)
+    fetch(Data)
       .then((res) => res.json())
       .then((json) => dispatch({ type: "SET_PRODUCTS", payload: json }))
       .catch((err) => alert(err));
