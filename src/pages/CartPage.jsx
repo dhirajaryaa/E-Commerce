@@ -45,7 +45,7 @@ function CartPage() {
               </h2>
             )}
           </div>
-          <CartTotal />
+          <CartTotal product={cart}/>
         </div>
       </div>
     </>
