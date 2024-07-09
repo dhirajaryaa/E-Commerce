@@ -7,6 +7,24 @@ export function CartReducer(state, action) {
     case "SET_PRODUCTS_ON_CART":
       return { ...state, cart: [...state.cart, action.payload] };
 
+    case "DEC_QTY_ON_CART":
+      const decQtyCart = state.cart.map((item)=>{
+        if(item.id === action.payload.id){
+          return {...item,qty:item.qty > 1 ? item.qty-1:item.qty}
+        }
+        return item
+      });
+      return {...state,cart:decQtyCart};
+
+    case "INC_QTY_ON_CART":
+      const incQtyCart = state.cart.map((item)=>{
+        if(item.id === action.payload.id ){
+          return {...item,qty:item.qty+1}
+        }
+        return item
+      });
+      return {...state,cart:incQtyCart};
+
 
     default:
       return state;
