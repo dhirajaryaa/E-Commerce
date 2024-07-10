@@ -1,4 +1,4 @@
-export function FilterReducer({ state, action }) {
+export function FilterReducer(state, action) {
   switch (action.type) {
     case "SORT_BY_PRICE":
       return { ...state, sort: action.payload };

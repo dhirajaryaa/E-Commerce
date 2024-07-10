@@ -13,7 +13,7 @@ function CartContext({ children }) {
 
 
   const [filteredState,filteredDispatch] = useReducer(FilterReducer,{
-    by_Rating: 0,
+    rating: 0,
     searchQuery:"",
     brand:"",
   })
