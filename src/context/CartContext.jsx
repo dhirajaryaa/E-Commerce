@@ -1,5 +1,6 @@
 import React, { createContext, useEffect, useReducer } from "react";
 import { CartReducer } from "./CartReducer";
+import { FilterReducer } from "./FilterReducer";
 
 
 export const Cart = createContext();
@@ -9,6 +10,13 @@ function CartContext({ children }) {
     products: [],
     cart: [],
   });
+
+
+  const [filteredState,filteredDispatch] = useReducer(FilterReducer,{
+    by_Rating: 0,
+    searchQuery:"",
+    brand:"",
+  })
 
   function getProduct() {
     fetch(`https://fakestoreapi.com/products`)
@@ -22,6 +30,6 @@ function CartContext({ children }) {
   }, []);
 
 
-  return <Cart.Provider value={{ state, dispatch }}>{children}</Cart.Provider>;
+  return <Cart.Provider value={{ state, dispatch,filteredState,filteredDispatch}}>{children}</Cart.Provider>;
 }
 export default CartContext;
