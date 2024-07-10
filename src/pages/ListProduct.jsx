@@ -23,7 +23,7 @@ function ListProduct() {
   return (
     <section className="text-black body-font">
       <div className="container py-10 mx-auto px-8 sm:px-24 md:px-4">
-        <Filters />
+      <Filters />
         <div className="flex flex-wrap gap-6 justify-evenly md:justify-between">
           {products &&
             products.map((product) => (
