@@ -1,8 +1,15 @@
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 function CartTotal({product}) {
+  const [total,setTotal] = useState(0);
+  
+  const navigate = useNavigate();
+ const handleNavigate = () => {
+    navigate("/checkout");
+  };
 
-  const [total,setTotal] = useState();
+
 
   useEffect(()=>{
     setTotal((product.reduce((acc,curr)=> acc + Number(curr.price*curr.qty) ,0)).toFixed(2))
@@ -23,7 +30,8 @@ function CartTotal({product}) {
           <p className="text-sm text-gray-700">including GST</p>
         </div>
       </div>
-      <button className="mt-6 w-full rounded-md bg-blue-500 py-1.5 font-medium text-blue-50 hover:bg-blue-600">
+     
+      <button disabled={Number(total) === 0 ? true:false} onClick={handleNavigate} className="mt-6 w-full rounded-md bg-blue-500 py-1.5 font-medium text-blue-50 hover:bg-blue-600 disabled:bg-slate-500">
         Check out
       </button>
     </div>
