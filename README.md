@@ -1,6 +1,8 @@
 # E-Commerce Project README
 
 This project is an eCommerce web application built with React, styled using Tailwind CSS and Tailwind Blocks components. It fetches data from the FakeShop API to populate the product catalog and handle shopping cart functionalities.
+## Demo 
+[![Video Title](https://i.ytimg.com/an_webp/h7ZCPV7tw7w/mqdefault_6s.webp?du=3000&sqp=CKicurQG&rs=AOn4CLC5I1bUGxfehEv1QpToPmpnMHtWMg)](https://www.youtube.com/watch?v=h7ZCPV7tw7w)
 
 ## Features
 
