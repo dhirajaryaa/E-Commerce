@@ -1,10 +1,15 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import { FaSearch } from "react-icons/fa";
 import CartBtn from "./CartBtn";
+import { Cart } from "../context/CartContext";
 
 function Header() {
   const [isOpen, setIsOpen] = useState(false);
+  const {
+    filteredState: { searchQuery},
+    filteredDispatch,
+  } = useContext(Cart);
   const toggleSearch = () => {
     setIsOpen(!isOpen);
   };
@@ -27,6 +32,8 @@ function Header() {
         >
           <input
             type="text"
+            value={searchQuery}
+            onChange={(e)=>filteredDispatch({type:"FILTER_BY_SEARCH",payload:e.target.value})}
             placeholder="Search Product..."
             className="bg-blue-400 sm:bg-white sm:text-gray-600  w-screen sm:w-full rounded-full px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-200 text-white placeholder:text-white sm:placeholder:text-gray-600"
           />

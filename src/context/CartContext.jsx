@@ -15,7 +15,7 @@ function CartContext({ children }) {
   const [filteredState,filteredDispatch] = useReducer(FilterReducer,{
     rating: 0,
     searchQuery:"",
-    brand:"",
+    brand:"all brands",
   })
 
   function getProduct() {

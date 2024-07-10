@@ -10,9 +10,9 @@ export function FilterReducer(state, action) {
       return { ...state, brand: action.payload };
     case "CLEAR_FILTER":
       return {
-        by_Rating: 0,
+        rating: 0,
         searchQuery: "",
-        brand: "",
+    brand:"all brands",
       };
 
     default:
